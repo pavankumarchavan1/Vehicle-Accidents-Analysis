@@ -1,14 +1,29 @@
 -- Exploratory Data Analysis of Vehicle Accidents database
 
 
--- 1. How many accidents have occurred in Urban areas v/s rural areas?
+-- 1. Retrieve the count of accidents based on severity.
+SELECT Severity, COUNT(AccidentIndex) AS Acciddent_Count
+FROM accident
+GROUP BY Severity
+ORDER BY Acciddent_Count DESC;
+
+
+-- 2. Analyze the trend of accidents over different time intervals.
+
+SELECT MONTHNAME(Date) AS Months, COUNT(AccidentIndex) AS Acciddent_Count
+FROM accident
+GROUP BY Months
+ORDER BY Acciddent_Count DESC;
+
+
+-- 3. How many accidents have occurred in Urban areas v/s rural areas?
 
 SELECT Area, COUNT(Area) AS Total_Accidents
 FROM accident
 GROUP BY Area;
 
 
--- 2. Which day of the week has the highest number of accidents?
+-- 4. Which day of the week has the highest number of accidents?
 
 SELECT Day, COUNT(Day) DayCount
 FROM accident
@@ -16,7 +31,7 @@ GROUP BY Day
 ORDER BY DayCount DESC;
 
 
--- 3. What is the average age of vehicles involved in accidents based on their type?
+-- 5. What is the average age of vehicles involved in accidents based on their type?
 
 SELECT VehicleType, COUNT(AccidentIndex) AS Accidents_count, ROUND(AVG(AgeVehicle), 2) AS Average_age_of_vehicles
 FROM vehicle
@@ -25,7 +40,7 @@ GROUP BY VehicleType
 ORDER BY Accidents_count DESC, Average_age_of_vehicles DESC;
 
 
--- 4. Can we identify any trends in accidents based on the age of vehicles involved?
+-- 6. Can we identify any trends in accidents based on the age of vehicles involved?
 
 SELECT AgeGroup, COUNT(AccidentIndex) AS Accident_Count, ROUND(AVG(AgeVehicle), 2) AS AverageAge
 FROM (
@@ -41,14 +56,13 @@ GROUP BY AgeGroup
 ORDER BY AverageAge DESC;
 
 
--- 5. Are there any specific weather conditions that contribute to severe accidents?
+-- 7. Are there any specific weather conditions that contribute to severe accidents?
 
 -- For all types of severity
 SELECT WeatherConditions, Severity, COUNT(Severity) AS Severe_accidents
 FROM accident
 GROUP BY WeatherConditions, Severity
 ORDER BY Severe_accidents DESC;
-
 
 -- For specific severity
 
@@ -61,14 +75,14 @@ GROUP BY WeatherConditions, Severity
 ORDER BY Severe_accidents DESC;
 
 
--- 6. Do accidents often involve impacts on the left-hand side of vehicles?
+-- 8. Do accidents often involve impacts on the left-hand side of vehicles?
 
 SELECT LeftHand, COUNT(AccidentIndex)
 FROM vehicle
 GROUP BY LeftHand;
 
 
--- 7. Are there any relationships between journey purposes and the severity of accidents?
+-- 9. Are there any relationships between journey purposes and the severity of accidents?
 
 SELECT JourneyPurpose, Severity, COUNT(Severity) AS Severe_Accidents
 FROM vehicle v
@@ -78,7 +92,7 @@ GROUP BY JourneyPurpose, Severity
 ORDER BY Severe_Accidents DESC;
 
 
--- 8. Calculate the average age of vehicles involved in accidents, considering day light and point of impact.
+-- 10. Calculate the average age of vehicles involved in accidents, considering day light and point of impact.
 
 SELECT v.PointImpact, a.LightConditions, ROUND(AVG(v.AgeVehicle), 2) AS Avg_age
 FROM vehicle v
