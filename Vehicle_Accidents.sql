@@ -49,6 +49,7 @@ FROM accident
 GROUP BY WeatherConditions, Severity
 ORDER BY Severe_accidents DESC;
 
+
 -- For specific severity
 
 -- DECLARE @Severity VARCHAR(20)
