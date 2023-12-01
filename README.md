@@ -1,6 +1,13 @@
 # Vehicle-Accidents-Analysis
 
+Vehicle accidents, often referred to as traffic collisions or crashes, involve the unintended collision of one or more vehicles. These incidents can result in damage to vehicles, injuries to occupants, and sometimes even loss of life. Vehicle accidents can vary widely in severity, ranging from minor fender benders to major collisions with significant consequences.
+
+
 This project focuses on analyzing vehicle accidents using SQL. The dataset used in this analysis contains information about various aspects of accidents, including light conditions, weather conditions, road conditions, date, severity, vehicle type involved, the point of impact, journey purpose and age of vehicle. The project's primary objective is to extract invaluable insights from this rich dataset.
+
+## Aim of the Project
+
+The aim of analyzing vehicle accidents is multifaceted and serves various critical purposes. The primary objective of this project is to enhance road safety by identifying and understanding the contributing factors and implementing evidence-based interventions to prevent accidents and minimize their consequences by extracting invaluable insights from this rich dataset. 
 
 This project answers some of the following questions through Exploratory Data Analysis:
 
